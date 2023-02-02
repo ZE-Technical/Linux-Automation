@@ -61,9 +61,10 @@ spec:
 kubectl apply -f public-static-pvc.yaml -n awx
 #
 kubectl get pvc -n awx
-#
-vi awx-instance-deployment.yml
----
+# C
+file_to_create="awx-instance-deployment.yml"
+
+echo "---
 apiVersion: awx.ansible.com/v1beta1
 kind: AWX
 metadata:
@@ -78,7 +79,7 @@ spec:
   extra_volumes: |
     - name: static-data
       persistentVolumeClaim:
-        claimName: public-static-data-pvc
+        claimName: public-static-data-pvc" > $file_to_create
 # Install AWX
 kubectl apply -f awx-instance-deployment.yml -n awx
 # After 2 minutes check pod creation status

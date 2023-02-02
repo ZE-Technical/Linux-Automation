@@ -1,16 +1,11 @@
+#!/bin/bash
+
 # Fix /etc/machine-id Clone IP issue 
 
-# Access the network config file and change it's contence
-vi /etc/netplan/*.yaml
+# Create variable pointing to network config file
+file_to_edit="/etc/netplan/*.yaml"
 
-network:
-  version: 2
-  renderer: networkd
-  ethernets:
-    default:
-      match:
-        name: e*
-      dhcp4: yes
-      dhcp-identifier: mac
+# Change contents of network config file
+sed -i 's/dhcp-identifier: machine-id/dhcp-identifier: mac/g' $file_to_edit
 
-# After this, convert the VM into a template and give it to Terraform to deploy clones with
+# After this, convert the VM into a template and give it to Terraform to deploy clones with unique IP addresses
