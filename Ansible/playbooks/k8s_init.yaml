@@ -1,0 +1,45 @@
+---
+
+- name: Make Temp Directory
+  file:
+    path: /etc/temp
+    state: directory
+
+- name: Download Github Repository
+  git:
+    repo: https://github.com/ZE-Technical/Linux-Automation
+    dest: /etc/temp
+    version: master
+    clone: yes
+
+- name: Verify Github Repository Download
+  fail:
+    msg: "Failed to download Github repository"
+  when: git_result.failed
+
+- name: Set scripts to be executable
+  file:
+    path: /etc/temp/ubuntu/*
+    mode: u+x
+    state: file
+
+- name: Run Docker Installation script
+  shell: /etc/temp/ubuntu/docker.sh
+  register: script_result
+
+- name: Display script output
+  debug:
+    var: script_result
+
+- name: Run K3s & HELM Installation script
+  shell: /etc/temp/ubuntu/k3s_helm.sh
+  register: script_result
+
+- name: Display script output
+  debug:
+    var: script_result
+
+- name: Remove Github Repository
+  file:
+    path: /etc/temp
+    state: absent

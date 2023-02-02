@@ -16,6 +16,7 @@ apt-get install -y \
     gnupg \
     lsb-release \
     unzip \
+    wget \
     net-tools
 
 # Add Docker's official GPG key

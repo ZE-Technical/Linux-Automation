@@ -1,0 +1,40 @@
+---
+
+- name: Download Github Repository
+  git:
+    repo: https://github.com/ZE-Technical/Linux-Automation
+    dest: /path/to/repo
+    version: master
+    clone: yes
+
+- name: Verify Github Repository Download
+  fail:
+    msg: "Failed to download Github repository"
+  when: git_result.failed
+
+- name: Set scripts to be executable
+  file:
+    path: /path/to/repo/*
+    mode: u+x
+    state: file
+
+- name: Run Docker Installation script
+  shell: /path/to/repo/docker.sh
+  register: script_result
+
+- name: Display script output
+  debug:
+    var: script_result
+
+- name: Run Rancher Installation script
+  shell: /path/to/repo/rancher.sh
+  register: script_result
+
+- name: Display script output
+  debug:
+    var: script_result
+
+- name: Remove Github Repository
+  file:
+    path: /path/to/repo
+    state: absent
