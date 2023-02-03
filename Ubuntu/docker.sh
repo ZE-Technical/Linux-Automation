@@ -15,10 +15,6 @@ apt-get install -y \
     curl \
     gnupg \
     lsb-release \
-    unzip \
-    wget \
-    net-tools \
-    stress
 
 # Add Docker's official GPG key
 mkdir -p /etc/apt/keyrings -y
