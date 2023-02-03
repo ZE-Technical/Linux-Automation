@@ -57,7 +57,7 @@ FLUSH PRIVILEGES;
 exit
 
 # Verify mySQL is running and run if isn't
-service_name="<service_name>"
+service_name="mysql.service"
 
 if ! systemctl is-active --quiet "$service_name"; then
   systemctl start "$service_name"
