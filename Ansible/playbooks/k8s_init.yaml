@@ -1,5 +1,9 @@
 ---
 
+- name: Include variables from a file
+  include_vars:
+    file: /Linux-Automation/Ansible/vars.yaml
+
 - name: Make Temp Directory
   file:
     path: /etc/temp

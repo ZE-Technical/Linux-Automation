@@ -13,6 +13,9 @@ else
   echo "$service_name is already running"
 fi
 
+# Install Nginx Stream module onto the server
+sudo apt install libnginx-mod-stream
+
 # Update /etc/nginx/nginx.conf file with the IP addresses of K3 Nodes
 IP_NODE_1="10.0.0."
 IP_NODE_2="10.0.0."
@@ -20,6 +23,7 @@ IP_NODE_3="10.0.0."
 
 vi /etc/nginx/nginx.conf
 
+load_module /usr/lib/nginx/modules/ngx_stream_module.so;
 worker_processes 4;
 worker_rlimit_nofile 40000;
 
@@ -54,3 +58,4 @@ stream {
 
 # reload Nginx
 nginx -s reload
+service nginx restart

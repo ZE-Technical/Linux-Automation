@@ -7,6 +7,8 @@
 mkdir -p /etc/rancher/rke2/
 
 # Create the RKE2 config file
+touch /etc/rancher/rke2/config.yaml
+
 token: $MY_SHARED_SECRET
     server: https://<DNS-DOMAIN>:9345
     tls-san:

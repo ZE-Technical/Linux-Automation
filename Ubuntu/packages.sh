@@ -15,4 +15,4 @@ sudo apt-get -y install \
     unzip \
     wget \
     net-tools \
-    stress \
+    stress
