@@ -7,10 +7,10 @@ source k3s_vars.sh
 export K3S_DATASTORE_ENDPOINT="mysql://$MYSQL_USER:$MYSQL_PASSWORD@tcp($MYSQL_IP:3306)/$MYSQL_DB"
 
 # Download and install K3s
-curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION="$K3S_VERSION" sh -s - agent
+curl -sfL https://get.k3s.io | K3S_URL=https://$NGINX_SERVER_IP:6443 K3S_TOKEN=$K3S_TOKEN sh -
 
 # Start the K3s service
-sudo systemctl start k3s.service
+sudo systemctl start k3s-agent.service
 
 # Check if the K3s service is running
 SERVICE_NAME="k3s-agent.service"

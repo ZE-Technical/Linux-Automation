@@ -20,6 +20,8 @@ fi
 
 vi /etc/nginx/nginx.conf
 
+load_module /usr/lib/nginx/modules/ngx_stream_module.so;
+
 worker_processes 4;
 worker_rlimit_nofile 40000;
 
