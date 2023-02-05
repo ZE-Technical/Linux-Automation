@@ -81,11 +81,11 @@ sed -i "s/bind-address            = 127.0.0.1/bind-address            = "$MYSQL_
 systemctl restart mysql.service
 
 # Verify mySQL is running and run if isn't
-service_name="mysql.service"
+SERVICE_NAME="mysql.service"
 
-if ! systemctl is-active --quiet "$service_name"; then
-  systemctl start "$service_name"
-  echo "Started $service_name"
+if ! systemctl is-active --quiet "$SERVICE_NAME"; then
+  systemctl start "$SERVICE_NAME"
+  echo "Started $SERVICE_NAME"
 else
-  echo "$service_name is already running"
+  echo "$SERVICE_NAME is already running"
 fi

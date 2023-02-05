@@ -13,4 +13,11 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION="$K3S_VERSION" sh -s - server
 sudo systemctl start k3s.service
 
 # Check if the K3s service is running
-sudo systemctl status k3s.service
+SERVICE_NAME="mysql.service"
+
+if ! systemctl is-active --quiet "$SERVICE_NAME"; then
+  systemctl start "$SERVICE_NAME"
+  echo "Started $SERVICE_NAME"
+else
+  echo "$SERVICE_NAME is already running"
+fi

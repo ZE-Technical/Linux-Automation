@@ -7,13 +7,13 @@ source k3s_vars.sh
 sudo apt -y install nginx
 
 # Verify that Nginx service is running
-service_name="nginx.service"
+SERVICE_NAME="nginx.service"
 
-if ! systemctl is-active --quiet "$service_name"; then
-  systemctl start "$service_name"
-  echo "Started $service_name"
+if ! systemctl is-active --quiet "$SERVICE_NAME"; then
+  systemctl start "$SERVICE_NAME"
+  echo "Started $SERVICE_NAME"
 else
-  echo "$service_name is already running"
+  echo "$SERVICE_NAME is already running"
 fi
 
 # Update /etc/nginx/nginx.conf file with the IP addresses of K3 Nodes
