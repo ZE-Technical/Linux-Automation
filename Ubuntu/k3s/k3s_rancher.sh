@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Import environment variables
+source k3s_vars.sh
+
 # Download kubectl binary on local workstation to configure and manage K3s cluster
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 

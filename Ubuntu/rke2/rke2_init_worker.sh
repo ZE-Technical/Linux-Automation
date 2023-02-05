@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Import group variables
-. rke2_vars.sh
+source rke2_vars.sh
 
 # Create directory for RKE2 config to be placed
 mkdir -p /etc/rancher/rke2/

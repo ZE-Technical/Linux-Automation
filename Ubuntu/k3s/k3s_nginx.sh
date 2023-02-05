@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Import environment variables
+source k3s_vars.sh
+
 # Install Nginx
 sudo apt -y install nginx
 
@@ -14,9 +17,6 @@ else
 fi
 
 # Update /etc/nginx/nginx.conf file with the IP addresses of K3 Nodes
-IP_NODE_1="10.0.0."
-IP_NODE_2="10.0.0."
-IP_NODE_3="10.0.0."
 
 vi /etc/nginx/nginx.conf
 
