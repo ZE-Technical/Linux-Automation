@@ -28,3 +28,13 @@ echo \
 # Install Docker engine
 apt-get update
 apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
+# Check to make sure that Docker is running
+SERVICE_NAME="docker.service"
+
+if ! systemctl is-active --quiet "$SERVICE_NAME"; then
+  systemctl start "$SERVICE_NAME"
+  echo "Started $SERVICE_NAME"
+else
+  echo "$SERVICE_NAME is already running"
+fi

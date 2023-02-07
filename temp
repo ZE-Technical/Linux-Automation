@@ -3,3 +3,18 @@ k3s-node2 = 00:50:56:b1:a5:1b
 k3s-node3 = 00:50:56:b1:4d:c4
 
 K3S_TOKEN="K107f58854df267247987a614f0f0334633be927cbd26ff903748f368a25db6fe74::server:b982ce65814fb8173a0ff18f55e66a2f"
+
+events {}
+
+stream {
+    upstream k3s_servers {
+        server 10.0.0.16:6443;
+        server 10.0.0.17:6443;
+        server 10.0.0.18:6443;
+    }
+
+    server {
+        listen 6443;
+        proxy_pass k3s_servers;
+    }
+}

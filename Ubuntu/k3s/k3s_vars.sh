@@ -15,3 +15,4 @@ K3S_TOKEN="$IP_NODE_1:/var/lib/rancher/k3s/server/node-token"
 
 # NginX vars
 NGINX_SERVER_IP="10.0.0.15"
+NGINX_SERVER_DNS="rancher.zetechnical.com"

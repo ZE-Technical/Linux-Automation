@@ -51,7 +51,16 @@ stream {
         listen     443;
         proxy_pass rancher_servers_https;
     }
+    upstream k3s_servers {
+        server $IP_NODE_1:6443;
+        server $IP_NODE_2:6443;
+        server $IP_NODE_3:6443;
+    }
 
+    server {
+        listen 6443;
+        proxy_pass k3s_servers;
+    }
 }
 
 # reload Nginx
