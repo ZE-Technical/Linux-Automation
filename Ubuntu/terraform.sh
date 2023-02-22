@@ -11,3 +11,9 @@ echo $PATH
 
 # Add Terraform Binary to PATH
 mv terraform /bin/
+
+# Remove Terraform zip folder
+rm -rf terraform_1.3.9_linux_amd64.zip
+
+# Verify Terraform is reachable from anywhere
+terraform
