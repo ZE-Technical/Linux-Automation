@@ -1,10 +1,13 @@
 #!/bin/bash
 
 # Download Terraform Binary from HashiCorp with wget
-wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+wget https://releases.hashicorp.com/terraform/1.3.9/terraform_1.3.9_linux_amd64.zip
 
-# Verify Terraform downloaded
-echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+# Unzip Terraform Binary
+unzip terraform_1.3.9_linux_amd64.zip
 
-# Install Terraform with apt
-apt-get update && apt-get install terraform
+# Check PATH variable
+echo $PATH
+
+# Add Terraform Binary to PATH
+mv terraform /bin/
