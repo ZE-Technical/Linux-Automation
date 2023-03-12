@@ -4,7 +4,7 @@
 sudo apt-get update
 
 # Upgrade all packages
-sudo apt-get -y Upgrade
+sudo apt-get -y upgrade
 
 # Install needed packages
 sudo apt-get -y install \
